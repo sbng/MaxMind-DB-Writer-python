@@ -375,7 +375,10 @@ class TreeWriter(object):
 
 
 def bits_rstrip(n, length=None, keep=0):
-    return map(int, bin(n)[2:].rjust(length, '0')[:keep])
+    if bin(n)[2:].rjust(length, '0')[:keep] == '':
+        return map(int, '0')
+    else:
+        return map(int, bin(n)[2:].rjust(length, '0')[:keep])
 
 
 class MMDBWriter(object):
